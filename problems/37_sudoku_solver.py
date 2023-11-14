@@ -10,9 +10,9 @@ class Solution:
 
         start_box_i = (current_i // 3) * 3
         start_box_j = (current_j // 3) * 3
-        box = box = board[start_box_i+0][start_box_j:start_box_j+3] +\
-                    board[start_box_i+1][start_box_j:start_box_j+3] +\
-                    board[start_box_i+2][start_box_j:start_box_j+3]
+        box = board[start_box_i+0][start_box_j:start_box_j+3] +\
+              board[start_box_i+1][start_box_j:start_box_j+3] +\
+              board[start_box_i+2][start_box_j:start_box_j+3]
 
         return options - set(row + column + box)
 

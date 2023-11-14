@@ -169,3 +169,4 @@ cython_debug/
 *.ipynb
 *.parquet
 *.diff
+_interview_questions/*
