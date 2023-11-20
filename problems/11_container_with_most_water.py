@@ -1,5 +1,5 @@
 class Solution:
-    def maxArea(self, height: List[int]) -> int:
+    def maxArea(self, height: list[int]) -> int:
         max_area = 0
 
         l, r = 0 , len(height) - 1
@@ -10,7 +10,7 @@ class Solution:
             else:
                 area = height[r] * (r - l)
                 r -=1
-            
+
             max_area = max(max_area, area)
-            
+
         return max_area
