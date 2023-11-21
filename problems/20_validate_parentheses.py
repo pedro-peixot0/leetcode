@@ -7,19 +7,24 @@ CLOSING_PAIRS = {
 class Solution:
     @staticmethod
     def isValid(s: str) -> bool:
-        open_parentheses_array = []
+        stack = []
 
-        for char in s:
-            opening_match = CLOSING_PAIRS.get(char)
-            if opening_match is not None: # if the current character is a closing parentheses
-                if not open_parentheses_array:
-                    return False
-                if open_parentheses_array.pop(-1) != opening_match:
-                    return False
-            else: # if the current character is a opening parentheses
-                open_parentheses_array.append(char)
+        for parentheses in s:
+            parentheses_pair = CLOSING_PAIRS.get(parentheses)
 
-        if open_parentheses_array:
+            # if it is a closing parentheses
+            if parentheses_pair and len(stack):
+                # get previous char
+                previous_parentheses = stack.pop()
+
+                # check if the last item in stack is a closing 
+                if not parentheses_pair == previous_parentheses:
+                    return False
+            else:
+                stack.append(parentheses)
+
+        # if there are open parentheses
+        if stack:
             return False
 
         return True
