@@ -1,18 +1,20 @@
 class Solution:
-    @staticmethod
-    def lengthOfLongestSubstring(s: str) -> int:
-        max_size = 0
-        substring = []
-        for c in s:
-            if c in substring:
-                sub_length = len(substring)
-                max_size = sub_length if sub_length > max_size else max_size
-                substring = substring[substring.index(c)+1:]                
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        seen = {}
+        left = 0
+        max_length = 0
+        for char_idx, char in enumerate(s):
+            if char in seen:
+                
+                max_length = max(max_length, char_idx-left)
 
-            substring.append(c)
-        
+                if seen[char] < left:
+                    max_length = max(max_length, char_idx-left + 1)
+                else:
+                    left = seen[char] + 1
+            seen[char] = char_idx
 
-        return max(max_size,len(substring))
+        return max(max_length, char_idx-left)
     
 # Second solution
 # class Solution:
